@@ -2,6 +2,16 @@
 const { Command } = require("commander");
 const axios = require("axios"); //default export therefore no curly braces
 const program = new Command(); //object
+const color = {
+    green: (t) => `\x1b[32m${t}\x1b[0m`,
+    red: (t) => `\x1b[31m${t}\x1b[0m`,
+    yellow: (t) => `\x1b[33m${t}\x1b[0m`,
+    blue: (t) => `\x1b[34m${t}\x1b[0m`,
+    bold: (t) => `\x1b[1m${t}\x1b[0m`,
+};
+const line = () => {
+    console.log(color.blue("_____________"));
+};
 // now we will access method (command,action)
 program
     .name("mycli")
@@ -13,7 +23,13 @@ program
 program
     .command("add <n1> <n2>")
     .description("Add two Numbers")
-    .action((n1, n2) => { console.log(Number(n1) + Number(n2)); });
+    .action((n1, n2) => {
+    const res = Number(n1) + Number(n2);
+    line();
+    console.log(color.bold(color.yellow("Calc Result")));
+    line();
+    console.log(color.green(`Result: ${res}`));
+});
 program
     .command("sub <n1> <n2>")
     .description("Subtract two Numbers")
