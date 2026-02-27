@@ -4,6 +4,10 @@ const axios = require("axios"); //default export therefore no curly braces
 const program = new Command(); //object
 // now we will access method (command,action)
 program
+    .name("mycli")
+    .description("version")
+    .version("1.0.0");
+program
     .command("greet <name>") // multiple ho skte hai
     .action((name) => { console.log(`Hello ${name}`); });
 program
