@@ -95,10 +95,18 @@ program
 .description("weather info")
 .action(async()=>{
     try{
+        console.log(color.yellow("Fetching Weather...."))
         const res=await axios.get(`https://wttr.in/London?format=j1`)
-        console.log(res.data.weather)
+        const data=res.data.current_condition[0]
+        line()
+        console.log(color.bold("Weather Report"))
+        line()
+        console.log(color.blue("Temperature"),color.green(data.temp_C+"C"))
+        console.log(color.blue("Humidity:"), color.green(data.humidity+"%"))
+        console.log(color.blue("Condition:"), color.green(data.weatherDesc[0].value))
+        line()
     }
-    catch(err){console.log(err)}
+    catch(err){console.log(color.red(err))}
 })
 
 program.parse() //saare commands likhne ke baad last mein likhna
