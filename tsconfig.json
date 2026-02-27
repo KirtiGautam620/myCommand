@@ -1,0 +1,9 @@
+{
+"compilerOptions": {
+"outDir": "./dist",  //(ts file ko js file mein convert krke dist folder mein rkhta hai)
+"rootDir": "./",
+"module": "CommonJS", //js module system used in nodejs that let us to import/export by using require
+"target": "ES2019", // convert ts to js works in ES2019(version of js) environments
+"esModuleInterop": true //import CommonJS modules using ES Module
+}
+}
